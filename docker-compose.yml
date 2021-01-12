@@ -1,0 +1,33 @@
+version: '3'
+services:
+  jupyter:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: myjupyter
+    volumes:
+      - ./:/work
+    working_dir: /work
+    ports:
+      - "8888:8888"
+    command: jupyter notebook --notebook-dir /work --ip=0.0.0.0 --allow-root
+  lab:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: mylab
+    volumes:
+      - ./:/work
+    working_dir: /work
+    ports:
+      - "8888:8888"
+    command: jupyter lab --notebook-dir /work --ip=0.0.0.0 --allow-root
+  julia:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: myjulia
+    volumes:
+      - ./:/work
+    working_dir: /work
+    command: julia --project=/work
