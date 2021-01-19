@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: myjupyter
+    container_name: imageprocessing-jupyter
     volumes:
       - ./:/work
     working_dir: /work
@@ -15,7 +15,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: mylab
+    container_name: imageprocessing-lab
     volumes:
       - ./:/work
     working_dir: /work
@@ -26,7 +26,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: myjulia
+    container_name: imageprocessing-julia
     volumes:
       - ./:/work
     working_dir: /work
