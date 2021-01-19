@@ -23,6 +23,15 @@ Pkg.precompile(); \
 
 ENV PATH="${HOME}/.julia/conda/3/bin":${PATH}
 
+USER root
+
+RUN cp -r /root/.julia/packages/OpenCV ${HOME}/.julia/packages/OpenCV
+RUN chown -R ${NB_UID} ${HOME}/.julia/packages/OpenCV
+
+USER ${NB_USER}
+
+RUN julia -e 'using Pkg; pkg"dev ~/.julia/packages/OpenCV"; Pkg.precompile(); using OpenCV'
+
 WORKDIR ${HOME}
 
 USER root
