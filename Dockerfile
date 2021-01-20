@@ -17,6 +17,7 @@ USER ${NB_USER}
 RUN julia -e '\
 ENV["PYTHON"]=""; \
 using Pkg; Pkg.add(["PyCall", "IJulia", "Conda"]); \
+using Pkg; Pkg.add(["Images", "PyPlot", "Plots"]); \
 using Conda; Conda.add(["jupyter", "jupyterlab"]); \
 Pkg.precompile(); \
 '
