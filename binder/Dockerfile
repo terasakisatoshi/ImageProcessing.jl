@@ -37,3 +37,11 @@ RUN julia -e 'using Pkg; pkg"dev ~/.julia/packages/OpenCV"; Pkg.precompile(); us
 WORKDIR ${HOME}
 
 EXPOSE 8888
+
+# binder specific configuration
+
+COPY ./experiment/notebooks ${HOME}
+
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
